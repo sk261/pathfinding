@@ -1,10 +1,12 @@
 from pygame import draw
 import math
+import random
 from pqueue import pqueue
 from pqueue import stack
 
 mapSize = (50,50)
 blockSize = 8
+random.seed(blockSize)
 
 startEnd = []
 selection = []
@@ -15,6 +17,14 @@ def getSize():
     return (_forwardConversion(mapSize[0]-1)+blockSize+2, _forwardConversion(mapSize[1]-1)+blockSize+2)
 
 
+
+def randomSelect():
+    x = random.randint(0, mapSize[0]-1)
+    y = random.randint(0, mapSize[1]-1)
+    if (x,y) in startEnd + selection:
+        return
+    commands.push((x,y))
+    selection.append((x,y))
 
 def initialize(surface):
     global startEnd

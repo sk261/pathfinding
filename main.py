@@ -12,6 +12,7 @@ def main():
     startSelect = False
     solving = False
     undo = False
+    random = False
 
     frames_per_second = 20
     seconds_per_frame = 1.0 / frames_per_second
@@ -26,6 +27,10 @@ def main():
                 solving = map.solveReady()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
                 undo = True
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                random = True
+            if event.type == pygame.KEYUP and event.key == pygame.K_r:
+                random = False
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 selecting = True
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
@@ -36,10 +41,13 @@ def main():
                 startSelect = False
         if solving:
             selecting = False
+            random = False
             startSelect = False
             ret = map.stepSolution()
             if not ret:
                 solving = False
+        if random:
+            map.randomSelect()
         if selecting:
             map.select(pygame.mouse.get_pos())
         if startSelect:
