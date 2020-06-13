@@ -9,6 +9,8 @@ Undo after pressing Enter to undo the solution
 Delete to clear the screen
 ```
 
+Walls have a weight of +100, so it's avoided but will be used if there's no choice or if your path is too long.
+
 Made in ~4 hours because I saw a cool YouTubevideo about it and wanted to make a copy of what the person made. I optimized it because they were going a little slow. I think they were redrawing the whole screen every time, whereas I only redraw the new cells during the solving stage. Use this to set up your workspace if you'd like:
 
 ```
